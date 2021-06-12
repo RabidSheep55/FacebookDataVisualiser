@@ -4,17 +4,19 @@ from scipy.stats import gaussian_kde
 import os, json
 from seaborn import color_palette
 
+# Consider the top N users
+N = 15
+
 # Open file
 with open(os.path.join("temp", "DMsInfo.json"), 'r') as file:
     data = json.load(file)
 
-# Consider the top N users
-N = 15
+# Sort by most messages exchanged
 _temp = [[user, data[user]["sentTotal"], data[user]["receivedTotal"]] for user in data.keys()]
 topUsers = np.array(sorted(_temp, key=lambda x: int(x[1])+int(x[2]), reverse=True))[:N, 0]
 
 # Create pallete
-pal = color_palette(palette='viridis', n_colors=N+2)
+pal = color_palette(palette='rocket', n_colors=N+2)
 # rocket, viridis, Set2, Paired
 
 # Group into all messages and compute density functions, grabbing the min and max timestamps
@@ -49,12 +51,15 @@ for i, user in enumerate(topUsers):
     plt.plot(x, densities[i] - i*0.8 + 0.025, c='w', zorder=i, linewidth=1)
     plt.text(np.min(x), -i*0.8 + 0.1, user, c=pal[i])
 
+# Apply plot settings
 plt.box(False)
 plt.tick_params(axis='y', left=False, top=False, right=False, bottom=False, labelleft=False, labeltop=False, labelright=False, labelbottom=False)
 plt.tick_params(axis='x', colors=pal[N-1])
 plt.suptitle("Normalized Frequency for Facebook Messages sent over time", c=pal[0], fontsize=12, y=0.96)
 plt.title("[Top trace has the most total messages]", c=pal[0], fontdict={'fontsize': 10}, pad=0.8)
+plt.ylim(bottom=-(N-1)*0.8-0.05)
 plt.tight_layout()
 
+# Save and display
 plt.savefig(os.path.join("outputs", "DM History Plot.png"), dpi=500)
 plt.show()

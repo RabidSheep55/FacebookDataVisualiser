@@ -1,3 +1,4 @@
+print("[loc] Starting location plotting")
 import os
 import pandas as pd
 import folium
@@ -13,15 +14,16 @@ print(f"[loc] Loaded {df.shape[0]} entries")
 # Plot
 m = folium.Map()
 
-# for lat, lon, date in zip(df["coordinate.latitude"], df["coordinate.longitude"], df["creation_timestamp"]):
-    # folium.Marker([lat, lon], tooltip=dt.utcfromtimestamp(date).strftime('%Y-%m-%d %H:%M:%S')).add_to(m)
+heatmap_settings = {
+    "radius": 15
+}
 
-heatmap = HeatMap(df[["coordinate.latitude", "coordinate.longitude"]])
+heatmap = HeatMap(df[["coordinate.latitude", "coordinate.longitude"]], **heatmap_settings)
 
 m.add_child(heatmap)
 m.save(os.path.join("outputs", "index.html"))
 
-# For debug
+# For debug/output
 import webbrowser
-print("[info] Opening index.html in browser")
+print("[loc] Opening index.html in browser")
 webbrowser.open("file://" + os.path.join(os.getcwd(), "outputs", 'index.html'))

@@ -23,7 +23,8 @@ for i, threadDir in enumerate(threadDirs):
 
     info = {
         "dir": threadDir,
-        "messageFiles": [p.split('\\')[-1] for p in glob.glob(os.path.join(inboxDir, threadDir, "*.json"))]
+        "messageFiles": [p.split('\\')[-1] for p in glob.glob(os.path.join(inboxDir, threadDir, "*.json"))],
+        "title": data["title"]
     }
 
     if len(info["messageFiles"]) > 1:

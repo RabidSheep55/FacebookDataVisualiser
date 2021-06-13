@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Facebook Data Visualiser</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/boost.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript">
+      chartIt();
+
+      let series, users, palette;
+
+      async function getData() {
+        const res = await fetch('http://127.0.0.1:3000/DMsDensityInfo.json');
+        const data = await res.json();
+
+        users = data.labels.reverse();
+        palette = data.palette.reverse().map((cur) => '#' + cur.map(x => {
+          const hex = Math.floor(x*254).toString(16)
+          return hex.length === 1 ? '0' + hex : hex
+        }).join(''));
+        series = data.densities.reverse().reduce((acc, cur, ind) => [...acc, {
+          name: data.labels[ind],
+          data: cur.map((e, i) => [data.x[i], ind, e*1.2+ind]),
+          color: palette[ind],
+          zIndex: users.length - ind
+        }], []);
+      }
+
+      async function chartIt() {
+        await getData()
+        Highcharts.chart('container', {
+          chart: {
+            type: "areasplinerange"
+          },
+          title: null,
+          xAxis: {
+            type: "datetime"
+          },
+          yAxis: {
+            title: { text: null },
+            categories: users,
+            max: users.length,
+            labels: {
+              formatter: function () {
+                if (this.pos < users.length) return this.value;
+              },
+              x: 8,
+              y: -8,
+              align: 'left',
+              style: {
+                color: palette
+              }
+            },
+            startOnTick: true,
+            gridLineWidth: 0,
+            tickmarkPlacement: "off"
+          },
+          series: series,
+          tooltip: {
+            enabled: false
+          },
+          plotOptions: {
+            areasplinerange: {
+              marker: {
+                enabled: false
+              },
+              fillOpacity: 1,
+              lineColor: '#000'
+            },
+            series: {
+              enableMouseTracking: true,
+              states: {
+                inactive: {
+                  opacity: 1
+                },
+                hover: {
+                  enabled: false
+                }
+              }
+            }
+          },
+          legend: {
+            enabled: false
+          }
+        });
+      }
+    </script>
+    <style media="screen">
+      #container {
+        height: 500px;
+        width: 800px;
+      }
+    </style>
+  </body>
+</html>

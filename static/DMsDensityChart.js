@@ -67,6 +67,7 @@ async function chartIt() {
       series: {
         tooltip: {
           useHTML: true,
+          distance: 10,
           headerFormat: '',
           pointFormatter: function () { return `<div style='color: ${this.series.color}'><p><b>Sent:</b> ${data.traceInfo[this.series.name].sent}</p><br><p><b>Received:</b> ${data.traceInfo[this.series.name].received}</p><br><p><b>Total: </b>${data.traceInfo[this.series.name].total}</p></div>` },
           footerFormat: ''

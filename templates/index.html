@@ -11,7 +11,23 @@
   </head>
   <body>
     <header>
-      
+      <div class="header-item" id="header-titles">
+        <h1>Facebook Data Visualiser</h1>
+        <p>Similar to your Spotify wrapped experience, quickly visualise all the data Facebook has on you!</p>
+      </div>
+      <div class="header-item stat-container">
+        <h4 class='stat-title'>Total Messages Sent</h4>
+        <p class='stat'>{{ dashInfo['totalSent'] }}</p>
+      </div>
+      <div class="header-item stat-container">
+        <h4 class='stat-title'>Total Messages Received</h4>
+        <p class='stat'>{{ dashInfo['totalReceived'] }}</p>
+      </div>
+      <div class="header-item stat-container">
+        <h4 class='stat-title'>Total Messages</h4>
+        <p class='stat'>{{ 1 + 1 }}</p>
+      </div>
+
     </header>
     <div id="DMsDensityChart"></div>
     <script src="temp/DMsDensityInfo.js"></script>

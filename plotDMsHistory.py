@@ -16,7 +16,7 @@ _temp = [[user, data[user]["sentTotal"], data[user]["receivedTotal"]] for user i
 topUsers = np.array(sorted(_temp, key=lambda x: int(x[1])+int(x[2]), reverse=True))[:N, 0]
 
 # Create pallete
-pal = color_palette(palette='rocket', n_colors=N+2)
+pal = color_palette(palette='Set2', n_colors=N+2)
 # rocket, viridis, Set2, Paired
 
 # Group into all messages and compute density functions, grabbing the min and max timestamps

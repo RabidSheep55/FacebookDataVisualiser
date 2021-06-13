@@ -15,22 +15,27 @@
         <h1>Facebook Data Visualiser</h1>
         <p>Similar to your Spotify wrapped experience, quickly visualise all the data Facebook has on you!</p>
       </div>
-      <div class="header-item stat-container">
-        <h4 class='stat-title'>Total Messages Sent</h4>
-        <p class='stat'>{{ dashInfo['totalSent'] }}</p>
+      <div class="stats-container">
+        <div class="header-item stat-container">
+          <h4 class='stat-title'>Total Messages Sent</h4>
+          <b class='stat'>{{ dashInfo['totalSent'] }}</b>
+        </div>
+        <div class="header-item stat-container">
+          <h4 class='stat-title'>Total Messages Received</h4>
+          <b class='stat'>{{ dashInfo['totalReceived'] }}</b>
+        </div>
       </div>
-      <div class="header-item stat-container">
-        <h4 class='stat-title'>Total Messages Received</h4>
-        <p class='stat'>{{ dashInfo['totalReceived'] }}</p>
-      </div>
-      <div class="header-item stat-container">
-        <h4 class='stat-title'>Total Messages</h4>
-        <p class='stat'>{{ 1 + 1 }}</p>
-      </div>
-
     </header>
-    <div id="DMsDensityChart"></div>
-    <script src="temp/DMsDensityInfo.js"></script>
-    <script src="static/DMsDensityChart.js"></script>
+    <section>
+      <div id="DMsDensityChart"></div>
+      <script src="temp/DMsDensityInfo.js"></script>
+      <script src="static/DMsDensityChart.js"></script>
+      <div class="first-messages">
+        <h2>Your first messages</h2>
+        <p>Here are some of the first messages you sent/received!</p>
+        <p>{{ dashInfo }}</p>
+      </div>
+    </section>
+
   </body>
 </html>

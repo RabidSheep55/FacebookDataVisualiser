@@ -32,6 +32,11 @@ p {
   padding: 1rem;
 }
 
+.stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .stat-container {
   display: flex;
   flex-direction: column;
@@ -50,7 +55,14 @@ p {
   font-size: 3rem;
 }
 
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 #DMsDensityChart {
   height: 500px;
-  /* width: 800px; */
+  width: 100%;
+  max-width: 1000px;
 }

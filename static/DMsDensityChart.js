@@ -21,7 +21,13 @@ async function chartIt() {
     chart: {
       type: "areasplinerange"
     },
-    title: "Normalized Frequency for Facebook Messages sent over time",
+    title: {
+      text: "Normalized Frequency for Facebook Messages sent over time",
+      widthAdjust: 0
+    },
+    subtitle: {
+      text: "[Top trace has the most total messages]"
+    },
     xAxis: {
       type: "datetime",
       labels: {

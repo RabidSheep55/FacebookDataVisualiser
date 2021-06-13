@@ -1,3 +1,5 @@
+print(f"[getDMsDensity] Starting...")
+
 import numpy as np
 from seaborn import color_palette
 from scipy.stats import gaussian_kde
@@ -6,7 +8,11 @@ import os, json
 # Consider the top N users
 N = 15
 
+# Settings
+pointsPerLine = 300
+
 # Open file
+print(f"[getDMsDensity] Loading from file")
 with open(os.path.join("temp", "DMsInfo.json"), 'r') as file:
     data = json.load(file)
 
@@ -14,11 +20,15 @@ with open(os.path.join("temp", "DMsInfo.json"), 'r') as file:
 _temp = [[user, data[user]["sentTotal"], data[user]["receivedTotal"]] for user in data.keys()]
 topUsers = np.array(sorted(_temp, key=lambda x: int(x[1])+int(x[2]), reverse=True))[:N, 0]
 
+# Make traceInfo
+traceInfo = {user: {"sent": data[user]["sentTotal"], "received": data[user]["receivedTotal"], "total": data[user]["sentTotal"]+data[user]["receivedTotal"]} for user in topUsers}
+
 # Create pallete
 pal = color_palette(palette='rocket', n_colors=N+2)
 # rocket, viridis, Set2, Paired
 
 # Group into all messages and compute density functions, grabbing the min and max timestamps
+print(f"[getDMsDensity] Computing density functions")
 timestampLists = [data[user]["sentTimestamps"] + data[user]["receivedTimestamps"] for user in topUsers]
 densityFuncs = []
 mini, maxi = np.inf, 0
@@ -32,7 +42,7 @@ for timestamps in timestampLists:
     if max(timestamps) > maxi: maxi = max(timestamps)
 
 # Create x-space (with extra padding on the left)
-x = np.linspace(mini-(maxi-mini)/7, maxi, 600)
+x = np.linspace(mini-(maxi-mini)/7, maxi, pointsPerLine)
 
 # Compute traces and normalize
 densities = []
@@ -45,8 +55,11 @@ output = {
     "labels": list(topUsers),
     "densities": densities,
     "palette": pal,
-    "x": list(x)
+    "x": list(x),
+    "traceInfo": traceInfo
 }
 
-with open(os.path.join("temp", "DMsDensityInfo.json"), "w") as file:
+print(f"[getDMsDensity] Saving to js file")
+with open(os.path.join("temp", "DMsDensityInfo.js"), "w") as file:
+    file.write('const data = ')
     json.dump(output, file)

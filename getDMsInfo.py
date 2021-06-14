@@ -47,7 +47,7 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
             if msg["type"] not in ["Call", "Unsubscribe"]:
                 if msg['timestamp_ms'] < firstTimestamp:
                     dashInfo["firstMessages"].pop()     # Pop last message
-                    msg['recipient_name'] = threadTitle
+                    msg['recipient_name'] = threadTitle if msg["sender_name"] == mainUser else mainUser
                     dashInfo["firstMessages"].insert(0, msg)
                     firstTimestamp = msg['timestamp_ms']
 

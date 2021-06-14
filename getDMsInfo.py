@@ -20,12 +20,11 @@ parsedData = {}
 dashInfo = {
     "totalSent": 0,
     "totalReceived": 0,
-    "firstSentMessage": {},
-    "firstReceivedMessage": {}
+    "firstMessages": [0 for i in range(30)]
 }
+allSentMessages = []
 messageTypes = []
-firstTimestampSent = 1e20
-firstTimestampReceived = 1e20
+firstTimestamp = 1e20
 for i, threadInfo in enumerate(threadsInfo["direct"]):
     threadDir = threadInfo["dir"]
     threadTitle = threadInfo["title"]
@@ -45,22 +44,21 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
         for msg in data["messages"]:
             messageTypes += [msg["type"]]
             if msg["type"] not in ["Call", "Unsubscribe"]:
+                if msg['timestamp_ms'] < firstTimestamp:
+                    dashInfo["firstMessages"].pop()     # Pop last message
+                    msg['recipient_name'] = threadTitle
+                    dashInfo["firstMessages"].insert(0, msg)
+                    firstTimestamp = msg['timestamp_ms']
+
                 if msg["sender_name"] == mainUser:
                     parsedData[threadTitle]["sentTimestamps"] += [msg["timestamp_ms"]]
 
-                    if msg['timestamp_ms'] < firstTimestampSent:
-                        dashInfo["secondSentMessage"] = dashInfo["firstSentMessage"]
-                        msg['recipient_name'] = threadTitle
-                        dashInfo["firstSentMessage"] = msg
-                        firstTimestampSent = msg['timestamp_ms']
+                    if msg['type'] == "Generic" and "content" in msg:
+                        allSentMessages += [msg["content"]]
+
                 else:
                     parsedData[threadTitle]["receivedTimestamps"] += [msg["timestamp_ms"]]
 
-                    if msg['timestamp_ms'] < firstTimestampReceived:
-                        dashInfo["secondReceivedMessage"] = dashInfo["firstReceivedMessage"]
-                        msg['recipient_name'] = threadTitle
-                        dashInfo["firstReceivedMessage"] = msg
-                        firstTimestampReceived = msg['timestamp_ms']
 
         sent = len(parsedData[threadTitle]["sentTimestamps"])
         received = len(parsedData[threadTitle]["receivedTimestamps"])
@@ -77,5 +75,8 @@ with open(os.path.join("temp", "dashInfo.json"), 'w') as file:
 
 with open(os.path.join("temp", "DMsInfo.json"), "w") as file:
     json.dump(parsedData, file)
+
+with open(os.path.join("temp", "allSentMessages.json"), "w") as file:
+    json.dump(allSentMessages, file)
 
 print(collections.Counter(messageTypes))

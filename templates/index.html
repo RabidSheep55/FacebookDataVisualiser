@@ -34,21 +34,11 @@
         <h2>Your first messages</h2>
         <p>Here are some of the first messages you sent/received!</p>
         <div class="message-container">
-          <div class="message-header"><h3>{{ dashInfo['firstReceivedMessage']['sender_name'] }}</h3></div>
-          <p class="message-date">{{ dashInfo['firstReceivedMessage']['timestamp_ms'] | timestampToDate }}</p>
-          <div class="message message-received"><p>{{ dashInfo['firstReceivedMessage']['content'] }}</p></div>
-
-          <div class="message-header"><h3>{{ dashInfo['firstSentMessage']['sender_name'] }}</h3></div>
-          <p class="message-date">{{ dashInfo['firstSentMessage']['timestamp_ms'] | timestampToDate }}</p>
-          <div class="message message-received"><p>{{ dashInfo['firstSentMessage']['content'] }}</p></div>
-
-          <div class="message-header"><h3>{{ dashInfo['secondReceivedMessage']['sender_name'] }}</h3></div>
-          <p class="message-date">{{ dashInfo['secondReceivedMessage']['timestamp_ms'] | timestampToDate }}</p>
-          <div class="message message-received"><p>{{ dashInfo['secondReceivedMessage']['content'] }}</p></div>
-
-          <div class="message-header"><h3>{{ dashInfo['secondSentMessage']['sender_name'] }}</h3></div>
-          <p class="message-date">{{ dashInfo['secondSentMessage']['timestamp_ms'] | timestampToDate }}</p>
-          <div class="message message-received"><p>{{ dashInfo['secondSentMessage']['content'] }}</p></div>
+          {% for msg in dashInfo['firstMessages'] %}
+            <div class="message-header"><h3>{{ msg['sender_name'] }} to {{ msg['recipient_name'] }}</h3></div>
+            <p class="message-date">{{ msg['timestamp_ms'] | timestampToDate }}</p>
+            <div class="message {{ 'message-sent' if msg['sender_name'] == dashInfo['mainUser'] else 'message-received' }}"><p>{{ msg['content'] }}</p></div>
+          {% endfor %}
         </div>
       </div>
     </section>

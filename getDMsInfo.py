@@ -18,6 +18,7 @@ with open(os.path.join("temp", "threadsInfo.json"), 'r') as file:
 # Iterate through each DM thread folder
 parsedData = {}
 dashInfo = {
+    "mainUser": mainUser,
     "totalSent": 0,
     "totalReceived": 0,
     "firstMessages": [0 for i in range(30)]

@@ -70,3 +70,26 @@ section {
 .subsection {
   padding: 1rem;
 }
+
+.message-date {
+  text-align: center;
+}
+
+.message {
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.message-sent {
+  background: #0099FF;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.message-received {
+  background: #E4E6EB;
+  margin-left: 0;
+  margin-right: auto;
+}

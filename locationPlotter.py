@@ -12,7 +12,7 @@ df = pd.json_normalize(df)
 print(f"[loc] Loaded {df.shape[0]} entries")
 
 # Plot
-m = folium.Map()
+m = folium.Map( tiles="Stamen Toner")
 
 heatmap_settings = {
     "radius": 15

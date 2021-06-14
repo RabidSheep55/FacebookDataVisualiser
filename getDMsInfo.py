@@ -58,6 +58,7 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
 
                     if msg['timestamp_ms'] < firstTimestampReceived:
                         dashInfo["secondReceivedMessage"] = dashInfo["firstReceivedMessage"]
+                        msg['recipient_name'] = threadTitle
                         dashInfo["firstReceivedMessage"] = msg
                         firstTimestampReceived = msg['timestamp_ms']
 

@@ -7,37 +7,48 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+body:after {
+  display: table-cell;
+  content: "";
+  overflow-y: scroll;
+  visibility: hidden;
+}
+
 #landing-container {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   background-color: #dfe6e9;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
-.info-card {
-  border-radius: 1rem;
-  margin: 1rem;
+#info-card {
   width: 30%;
-  min-width: 400px;
+  min-width: 22rem;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  margin: 1rem;
+  /* height settings should remain consistent */
+  height: calc(50vh - 2rem);
+  min-height: 400px;
+  flex-grow: 1;
 }
 
 #title {
   font-weight: 600;
-  font-size: 5rem;
-  line-height: 5rem;
+  font-size: 4.5rem;
+  line-height: 4.5rem;
 }
 
 #description {
   font-size: 1.4rem;
-  padding: 1rem;
+  padding-top: 1rem;
 }
 
 #credits {
@@ -49,10 +60,15 @@
 .card {
   border-radius: 1rem;
   margin: 1rem;
+  /* default width settings */
   width: 30%;
-  min-width: 400px;
+  min-width: 700px;
+  max-width: 300px;
+  /* height settings should remain consistent */
   height: calc(50vh - 2rem);
-  ) min-height: 400px;
+  min-height: 400px;
+  overflow: hidden;
+  flex-grow: 1;
 }
 
 .card-title {
@@ -63,6 +79,11 @@
 .card-description {
   padding: 0 1.2rem;
   margin-top: -0.5rem;
+}
+
+.card-content {
+  width: auto;
+  height: 100%;
 }
 
 .green {
@@ -80,12 +101,24 @@
   filter: drop-shadow(0.5rem 0.5rem 0 #e17055);
 }
 
+.blue {
+  background-color: #74b9ff;
+  filter: drop-shadow(0.5rem 0.5rem 0 #0984e3);
+}
+
 .red {
   background-color: #ff7675;
   filter: drop-shadow(0.5rem 0.5rem 0 #d63031);
 }
 
 /* LIL STAT CONTAINERS */
+.stat-container-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .stat-container {
   display: flex;
   flex-direction: column;
@@ -99,3 +132,21 @@
 .stat-number {
   font-size: 3rem;
 }
+
+/* Messages card */
+#messages-card {
+  min-width: 50rem;
+}
+
+#messages-card .card-content {
+  display: grid;
+  grid-template: auto / auto auto;
+}
+
+/* Location card */
+#location-card {
+  min-width: 20rem;
+  max-width: 30rem;
+}
+
+/* Messages card */

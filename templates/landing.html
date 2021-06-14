@@ -7,46 +7,61 @@
   </head>
   <body>
     <div id="landing-container">
-      <div class="card info-card">
+      <div id="info-card">
         <h1 id="title">Facebook Data Visualiser</h1>
-        <p id="description">Similar to your Spotify wrapped experience, quickly visualise all the data Facebook has on you! Click on each of the cards to navigate to their respective pages.</p>
-        <p id="credits"><i>(Created by RabidSheep55)</i></p>
+        <p id="description">Similar to your Spotify wrapped experience, quickly visualise all the data Facebook has on you! Click on each of the cards to view more detailed statistics and graphs on their respective pages.</p>
+        <p id="credits"><i>(Created by <a href="https://github.com/RabidSheep55" target="_blank">RabidSheep55</a>)</i></p>
       </div>
-      <div class="card green">
+
+      <div class="card green" id="messages-card">
         <h2 class="card-title">Messages</h2>
         <p class="card-description">View interesting facts and trends extracted from every single Facebook message you have ever sent and received!</p>
         <div class="card-content">
-          <div class="stat-container">
-            <p class="stat-number">6969</p>
-            <p class="stat-description">Total Direct Messages Sent</p>
+          <div class="stat-container-container">
+            <div class="stat-container">
+              <p class="stat-number">40000</p>
+              <p class="stat-description">Total Direct Messages exchanged</p>
+            </div>
+            <div class="stat-container">
+              <p class="stat-number">6969</p>
+              <p class="stat-description">Number of groups</p>
+            </div>
+            <div class="stat-container">
+              <p class="stat-number">5</p>
+              <p class="stat-description">Total Direct Messages Unsent</p>
+            </div>
           </div>
-          <div class="stat-container">
-            <p class="stat-number">6969</p>
-            <p class="stat-description">Total Direct Messages Received</p>
-          </div>
-          <div class="stat-container">
-            <p class="stat-number">6969</p>
-            <p class="stat-description">Total Direct Messages Sent</p>
+          <div style="width: 400px; height: auto; display: flex; justify-content: center; align-items: center; background-color: black; color: white; border-radius: 1rem;">
+            Placeholder for top 5 people
           </div>
         </div>
       </div>
-      <div class="card salmon">
+
+      <div class="card salmon" id="location-card">
         <h2 class="card-title">Location History</h2>
+        <p class="card-description">Explore a heatmap showing everywhere you've been in the world, at least when Facebook was able to track your location.</p>
         <div class="card-content">
           <div class="stat-container">
             <p class="stat-number">90</p>
             <p class="stat-description">Total number of location data points</p>
           </div>
-          <div style="width: auto; height: 220px; display: flex; justify-content: center; align-items: center; background-color: #74b9ff; margin:1rem;">
+          <div style="width: auto; height: 220px; display: flex; justify-content: center; align-items: center; background-color: black; margin:1rem; color: white; border-radius: 1rem;">
             Placeholder for map
           </div>
         </div>
       </div>
-      <div class="card cyan">
+
+      <div class="card cyan" id="likes-card">
         <h2 class="card-title">Likes</h2>
         <div class="card-content"></div>
       </div>
-      <div class="card red">
+
+      <div class="card red" id="friends-card">
+        <h2 class="card-title">Friends</h2>
+        <div class="card-content"></div>
+      </div>
+
+      <div class="card blue">
         <h2 class="card-title">Friends</h2>
         <div class="card-content"></div>
       </div>

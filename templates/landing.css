@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  color: #2d3436;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#landing-container {
+  height: 100%;
+  width: 100vw;
+  background-color: #dfe6e9;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center
+}
+
+.info-card {
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 30%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+#title {
+  font-weight: 600;
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+#description {
+  font-size: 1.4rem;
+  padding: 1rem;
+}
+
+#credits {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.card {
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 30%;
+  min-width: 400px;
+  height: calc(50vh - 2rem);
+  ) min-height: 400px;
+}
+
+.card-title {
+  padding: 0.5rem 1.2rem;
+  font-size: 2rem;
+}
+
+.card-description {
+  padding: 0 1.2rem;
+  margin-top: -0.5rem;
+}
+
+.green {
+  background-color: #55efc4;
+  filter: drop-shadow(0.5rem 0.5rem 0 #00b894);
+}
+
+.cyan {
+  background-color: #81ecec;
+  filter: drop-shadow(0.5rem 0.5rem 0 #00cec9);
+}
+
+.salmon {
+  background-color: #fab1a0;
+  filter: drop-shadow(0.5rem 0.5rem 0 #e17055);
+}
+
+.red {
+  background-color: #ff7675;
+  filter: drop-shadow(0.5rem 0.5rem 0 #d63031);
+}
+
+/* LIL STAT CONTAINERS */
+.stat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.stat-description {}
+
+.stat-number {
+  font-size: 3rem;
+}

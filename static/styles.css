@@ -58,13 +58,14 @@ p {
 section {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 #DMsDensityChart {
-  height: 500px;
+  height: 600px;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .subsection {
@@ -73,6 +74,8 @@ section {
 
 .message-date {
   text-align: center;
+  font-size: 0.8rem;
+  color: darkgrey;
 }
 
 .message {

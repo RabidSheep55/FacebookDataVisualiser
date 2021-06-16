@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Facebook Data Visualiser - Home</title>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/boost.js"></script>
+
     <link rel="stylesheet" href="landing.css">
   </head>
   <body>
@@ -17,6 +22,36 @@
         <h2 class="card-title">Messages</h2>
         <p class="card-description">View interesting facts and trends extracted from every single Facebook message you have ever sent and received!</p>
         <div class="card-content">
+          <div id="simple-messages-chart"></div>
+          <script type="text/javascript">
+            const simpleMessageData =  [
+              [
+                "Mario Bartlett",
+                2797,
+                2674
+              ],
+              [
+                "Clare Harwood",
+                2686,
+                1884
+              ],
+              [
+                "Malika Giles",
+                1910,
+                2287
+              ],
+              [
+                "Darren Cannon",
+                1376,
+                1672
+              ],
+              [
+                "Nadia Little",
+                1285,
+                1207
+              ]]
+          </script>
+          <script src="simpleMessagesChart.js"></script>
           <div class="stat-container-container">
             <div class="stat-container">
               <p class="stat-number">40000</p>
@@ -31,21 +66,14 @@
               <p class="stat-description">Total Direct Messages Unsent</p>
             </div>
           </div>
-          <div style="width: 400px; height: auto; display: flex; justify-content: center; align-items: center; background-color: black; color: white; border-radius: 1rem;">
-            Placeholder for top 5 people
-          </div>
         </div>
       </div>
 
       <div class="card salmon" id="location-card">
         <h2 class="card-title">Location History</h2>
-        <p class="card-description">Explore a heatmap showing everywhere you've been in the world, at least when Facebook was able to track your location.</p>
+        <p class="card-description">Explore a heatmap showing everywhere you've been according to the {{ XXX }} location history points tracked by Facebook.</p>
         <div class="card-content">
-          <div class="stat-container">
-            <p class="stat-number">90</p>
-            <p class="stat-description">Total number of location data points</p>
-          </div>
-          <div style="width: auto; height: 220px; display: flex; justify-content: center; align-items: center; background-color: black; margin:1rem; color: white; border-radius: 1rem;">
+          <div style="width: auto; height: 100%; display: flex; justify-content: center; align-items: center; background-color: black; color: white; border-radius: 1rem 1rem 0 0;">
             Placeholder for map
           </div>
         </div>

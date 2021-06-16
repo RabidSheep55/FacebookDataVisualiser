@@ -23,7 +23,7 @@ dashInfo = {
     "totalReceived": 0,
     "firstMessages": [0 for i in range(30)]
 }
-allSentMessages = []
+simpleMessagesChart = {}
 messageTypes = []
 firstTimestamp = 1e20
 for i, threadInfo in enumerate(threadsInfo["direct"]):
@@ -54,9 +54,6 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
                 if msg["sender_name"] == mainUser:
                     parsedData[threadTitle]["sentTimestamps"] += [msg["timestamp_ms"]]
 
-                    if msg['type'] == "Generic" and "content" in msg:
-                        allSentMessages += [msg["content"]]
-
                 else:
                     parsedData[threadTitle]["receivedTimestamps"] += [msg["timestamp_ms"]]
 
@@ -70,14 +67,18 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
         dashInfo["totalSent"] += sent
         dashInfo["totalReceived"] += received
 
+        simpleMessagesChart[threadTitle] = {
+            "sent": sent,
+            "received": received
+        }
+
+dashInfo["simpleMessageSeries"] = sorted([(t, simpleMessagesChart[t]['sent'], simpleMessagesChart[t]['received']) for t in simpleMessagesChart.keys()], key=lambda x: x[1]+x[2], reverse=True)[:5]
+
 print(f"[getDMsInfo] Saving to files")
 with open(os.path.join("temp", "dashInfo.json"), 'w') as file:
     json.dump(dashInfo, file, indent=2)
 
 with open(os.path.join("temp", "DMsInfo.json"), "w") as file:
     json.dump(parsedData, file)
-
-with open(os.path.join("temp", "allSentMessages.json"), "w") as file:
-    json.dump(allSentMessages, file)
 
 print(collections.Counter(messageTypes))

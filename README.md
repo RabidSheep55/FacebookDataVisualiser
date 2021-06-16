@@ -20,3 +20,6 @@ Kind of like the Spotify wrapped experience, but for your Facebook data
     * Total rejected friend requests
     * Total friend requests sent
 * Pokes?
+* Groups
+    * Longest active group  
+    *

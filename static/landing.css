@@ -182,4 +182,17 @@ body:after {
   border-radius: 1rem;
 }
 
-/* Messages card */
+/* Messages History card */
+#message-history-card {
+  min-width: 35rem;
+  max-width: 50rem;
+}
+
+#message-history-card .card-content {
+  height: 0;
+}
+
+#DMs-density-chart {
+  height: 100%;
+  margin-bottom: 1rem;
+}

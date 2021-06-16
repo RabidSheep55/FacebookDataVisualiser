@@ -12,7 +12,7 @@ const simpleMessageSeries = simpleMessageData.reduce((acc, cur) => {
   return acc;
 }, [{ name: 'Sent', data: [], color: simpleMessageColours.sent, borderColor: simpleMessageColours.sent }, { name: 'Received', data: [], color: simpleMessageColours.received, borderColor: simpleMessageColours.received }])
 
-const chart = Highcharts.chart('simple-messages-chart', {
+const simpleMessagesChart = Highcharts.chart('simple-messages-chart', {
   chart: {
     type: 'bar',
     backgroundColor: "rgba(0, 0, 0, 0)",
@@ -82,6 +82,6 @@ const chart = Highcharts.chart('simple-messages-chart', {
 });
 
 setTimeout(function () {
-  chart.reflow();
+  simpleMessagesChart.reflow();
   // chart.redraw();
 }, 1)

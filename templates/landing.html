@@ -8,7 +8,7 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/boost.js"></script>
 
-    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="http://127.0.0.1:3000/static/landing.css">
   </head>
   <body>
     <div id="landing-container">
@@ -51,7 +51,7 @@
                 1207
               ]]
           </script>
-          <script src="simpleMessagesChart.js"></script>
+          <script src="http://127.0.0.1:3000/static/simpleMessagesChart.js"></script>
           <div class="stat-container-container">
             <div class="stat-container">
               <p class="stat-number">40000</p>
@@ -77,14 +77,20 @@
             Placeholder for map
           </div> -->
           <div id="map-container">
-            <iframe src="http://127.0.0.1:3000/index.html" id="map-iframe"></iframe>
+            <iframe src="http://127.0.0.1:3000/temp/map.html" id="map-iframe"></iframe>
           </div>
         </div>
       </div>
 
-      <div class="card cyan" id="likes-card">
-        <h2 class="card-title">Likes</h2>
-        <div class="card-content"></div>
+      <div class="card cyan" id="message-history-card">
+        <h2 class="card-title">Direct Messages History</h2>
+        <p class="card-description">View an evolution of the messaging frequency you've had with your 10 most talked to friends on Facebook.</p>
+        <div class="card-content">
+          <div id="DMs-density-chart"></div>
+          <script src="http://127.0.0.1:3000/temp/densityPalette.js"></script>
+          <script src="http://127.0.0.1:3000/temp/DMsDensityInfo.js"></script>
+          <script src="http://127.0.0.1:3000/static/DMsDensityChart.js"></script>
+        </div>
       </div>
 
       <div class="card red" id="friends-card">
@@ -92,8 +98,8 @@
         <div class="card-content"></div>
       </div>
 
-      <div class="card blue">
-        <h2 class="card-title">Friends</h2>
+      <div class="card blue" id="likes-card">
+        <h2 class="card-title">Likes</h2>
         <div class="card-content"></div>
       </div>
     </div>

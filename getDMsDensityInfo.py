@@ -6,7 +6,7 @@ from scipy.stats import gaussian_kde
 import os, json
 
 # Consider the top N users
-N = 15
+N = 10
 
 # Settings
 pointsPerLine = 300
@@ -24,8 +24,9 @@ topUsers = np.array(sorted(_temp, key=lambda x: int(x[1])+int(x[2]), reverse=Tru
 traceInfo = {user: {"sent": data[user]["sentTotal"], "received": data[user]["receivedTotal"], "total": data[user]["sentTotal"]+data[user]["receivedTotal"]} for user in topUsers}
 
 # Create pallete
-pal = color_palette(palette='rocket', n_colors=N+2)
+# pal = color_palette(palette='rocket', n_colors=N+2)
 # rocket, viridis, Set2, Paired
+pal = color_palette("blend:#20ADAB,#636e72", n_colors=N)
 
 # Group into all messages and compute density functions, grabbing the min and max timestamps
 print(f"[getDMsDensity] Computing density functions")
@@ -61,5 +62,5 @@ output = {
 
 print(f"[getDMsDensity] Saving to js file")
 with open(os.path.join("temp", "DMsDensityInfo.js"), "w") as file:
-    file.write('const data = ')
+    file.write('const DMsDensityData = ')
     json.dump(output, file)

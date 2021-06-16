@@ -20,15 +20,19 @@ m = folium.Map(
 )
 
 heatmap_settings = {
-    "radius": 15
+    "radius": 15,
+    # "gradient": {
+    #     0.4: "#fab1a0",
+    #     0.6: "#e17055"
+    # }
 }
 
 heatmap = HeatMap(df[["coordinate.latitude", "coordinate.longitude"]], **heatmap_settings)
 
 m.add_child(heatmap)
-m.save(os.path.join("outputs", "index.html"))
+m.save(os.path.join("temp", "map.html"))
 
 # For debug/output
 import webbrowser
 print("[loc] Opening index.html in browser")
-webbrowser.open("file://" + os.path.join(os.getcwd(), "outputs", 'index.html'))
+webbrowser.open("file://" + os.path.join(os.getcwd(), "temp", 'map.html'))

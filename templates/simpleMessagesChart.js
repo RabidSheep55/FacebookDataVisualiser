@@ -2,7 +2,7 @@ const simpleMessageColours = {
   sent: "#636e72",
   received: "#2d3436",
   labels: "#dfe6e9",
-  gridLines: 1
+  gridLines: "#00b894"
 };
 
 const topUsers = simpleMessageData.reduce((acc, cur) => [...acc, cur[0]], []);
@@ -19,7 +19,7 @@ const chart = Highcharts.chart('simple-messages-chart', {
     spacingTop: 0,
     spacingRight: 0,
     spacingBottom: 0,
-    spacingLeft: 0,
+    spacingLeft: -1,
     plotBorderWidth: 0
   },
   xAxis: {
@@ -35,7 +35,8 @@ const chart = Highcharts.chart('simple-messages-chart', {
         whiteSpace: 'nowrap',
         fontSize: "15px"
       }
-    }
+    },
+    lineColor: "rgba(0, 0, 0, 0)",
   },
   yAxis: {
     title: {
@@ -43,7 +44,17 @@ const chart = Highcharts.chart('simple-messages-chart', {
     },
     maxPadding: 0,
     showFirstLabel: false,
-    endOnTick: false
+    endOnTick: false,
+    gridLineColor: simpleMessageColours.gridLines,
+    gridLineDashStyle: 'dash',
+    gridLineWidth: 2,
+    labels: {
+      style: {
+        color: simpleMessageColours.gridLines,
+        fontSize: "14px",
+        fontWeight: "bold"
+      }
+    }
   },
   series: simpleMessageSeries,
   plotOptions: {
@@ -71,5 +82,6 @@ const chart = Highcharts.chart('simple-messages-chart', {
 });
 
 setTimeout(function () {
-  chart.reflow()
+  chart.reflow();
+  // chart.redraw();
 }, 1)

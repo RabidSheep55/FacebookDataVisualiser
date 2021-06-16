@@ -71,10 +71,13 @@
 
       <div class="card salmon" id="location-card">
         <h2 class="card-title">Location History</h2>
-        <p class="card-description">Explore a heatmap showing everywhere you've been according to the {{ XXX }} location history points tracked by Facebook.</p>
+        <p class="card-description">Explore a heatmap showing everywhere you've been according to all the location history points logged by Facebook.</p>
         <div class="card-content">
-          <div style="width: auto; height: 100%; display: flex; justify-content: center; align-items: center; background-color: black; color: white; border-radius: 1rem 1rem 0 0;">
+          <!-- <div style="width: auto; height: 100%; display: flex; justify-content: center; align-items: center; background-color: black; color: white; border-radius: 1rem 1rem 0 0;">
             Placeholder for map
+          </div> -->
+          <div id="map-container">
+            <iframe src="http://127.0.0.1:3000/index.html" id="map-iframe"></iframe>
           </div>
         </div>
       </div>

@@ -185,7 +185,7 @@ body:after {
 /* Messages History card */
 #message-history-card {
   min-width: 35rem;
-  max-width: 50rem;
+  max-width: 45rem;
 }
 
 #message-history-card .card-content {

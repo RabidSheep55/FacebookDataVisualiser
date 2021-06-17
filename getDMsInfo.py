@@ -21,7 +21,9 @@ dashInfo = {
     "mainUser": mainUser,
     "totalSent": 0,
     "totalReceived": 0,
-    "firstMessages": [0 for i in range(30)]
+    "firstMessages": [0 for i in range(30)],
+    "totalUnsent": 0,
+    "numberOfGroups": len(threadsInfo['group'])
 }
 simpleMessagesChart = {}
 messageTypes = []
@@ -45,6 +47,8 @@ for i, threadInfo in enumerate(threadsInfo["direct"]):
         for msg in data["messages"]:
             messageTypes += [msg["type"]]
             if msg["type"] not in ["Call", "Unsubscribe"]:
+                if msg["is_unsent"]: dashInfo["totalUnsent"] += 1
+
                 if msg['timestamp_ms'] < firstTimestamp:
                     dashInfo["firstMessages"].pop()     # Pop last message
                     msg['recipient_name'] = threadTitle if msg["sender_name"] == mainUser else mainUser

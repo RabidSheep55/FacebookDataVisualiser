@@ -10,7 +10,7 @@ def home():
     with open(os.path.join('temp', 'dashInfo.json'), 'r') as file:
         dashInfo = json.load(file)
 
-    return render_template('index.html', dashInfo=dashInfo)
+    return render_template('landing.html', dashInfo=dashInfo)
 
 @app.route('/temp/<path:filename>')
 def serveTemp(filename):
@@ -18,7 +18,6 @@ def serveTemp(filename):
 
 @app.template_filter('timestampToDate')
 def timestampToDate(timestamp):
-    print(timestamp)
     return datetime.fromtimestamp(timestamp/1000).strftime("%d %b %Y, %H:%M")
 
 if __name__ == "__main__":

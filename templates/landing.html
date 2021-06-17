@@ -8,7 +8,7 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/boost.js"></script>
 
-    <link rel="stylesheet" href="http://127.0.0.1:3000/static/landing.css">
+    <link rel="stylesheet" href="static/landing.css">
   </head>
   <body>
     <div id="landing-container">
@@ -24,45 +24,20 @@
         <div class="card-content">
           <div id="simple-messages-chart"></div>
           <script type="text/javascript">
-            const simpleMessageData =  [
-              [
-                "Mario Bartlett",
-                2797,
-                2674
-              ],
-              [
-                "Clare Harwood",
-                2686,
-                1884
-              ],
-              [
-                "Malika Giles",
-                1910,
-                2287
-              ],
-              [
-                "Darren Cannon",
-                1376,
-                1672
-              ],
-              [
-                "Nadia Little",
-                1285,
-                1207
-              ]]
+            const simpleMessageData = {{ dashInfo['simpleMessageSeries']  | safe }};
           </script>
-          <script src="http://127.0.0.1:3000/static/simpleMessagesChart.js"></script>
+          <script src="static/simpleMessagesChart.js"></script>
           <div class="stat-container-container">
             <div class="stat-container">
-              <p class="stat-number">40000</p>
+              <p class="stat-number">{{ dashInfo['totalSent'] + dashInfo['totalReceived'] }}</p>
               <p class="stat-description">Total Direct Messages exchanged</p>
             </div>
             <div class="stat-container">
-              <p class="stat-number">6969</p>
+              <p class="stat-number">{{ dashInfo['numberOfGroups'] }}</p>
               <p class="stat-description">Number of groups</p>
             </div>
             <div class="stat-container">
-              <p class="stat-number">5</p>
+              <p class="stat-number">{{ dashInfo['totalUnsent'] }}</p>
               <p class="stat-description">Total Direct Messages Unsent</p>
             </div>
           </div>
@@ -77,7 +52,7 @@
             Placeholder for map
           </div> -->
           <div id="map-container">
-            <iframe src="http://127.0.0.1:3000/temp/map.html" id="map-iframe"></iframe>
+            <iframe src="temp/map.html" id="map-iframe"></iframe>
           </div>
         </div>
       </div>
@@ -87,9 +62,9 @@
         <p class="card-description">View an evolution of the messaging frequency you've had with your 10 most talked to friends on Facebook.</p>
         <div class="card-content">
           <div id="DMs-density-chart"></div>
-          <script src="http://127.0.0.1:3000/temp/densityPalette.js"></script>
-          <script src="http://127.0.0.1:3000/temp/DMsDensityInfo.js"></script>
-          <script src="http://127.0.0.1:3000/static/DMsDensityChart.js"></script>
+          <script src="temp/densityPalette.js"></script>
+          <script src="temp/DMsDensityInfo.js"></script>
+          <script src="static/DMsDensityChart.js"></script>
         </div>
       </div>
 

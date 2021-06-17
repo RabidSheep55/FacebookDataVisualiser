@@ -84,4 +84,4 @@ const simpleMessagesChart = Highcharts.chart('simple-messages-chart', {
 setTimeout(function () {
   simpleMessagesChart.reflow();
   // chart.redraw();
-}, 1)
+}, 500)

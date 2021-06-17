@@ -98,4 +98,4 @@ const DMsDensityChart = Highcharts.chart('DMs-density-chart', {
 setTimeout(function () {
   DMsDensityChart.reflow();
   // chart.redraw();
-}, 1)
+}, 100)

@@ -13,8 +13,7 @@ print(f"[loc] Loaded {df.shape[0]} entries")
 
 # Plot
 m = folium.Map(
-    tiles="Stamen Toner",
-    zoom_start=6,
+    # tiles="Stamen Toner",
     zoom_control=False,
     attributionControl=0
 )
@@ -28,6 +27,11 @@ heatmap_settings = {
 }
 
 heatmap = HeatMap(df[["coordinate.latitude", "coordinate.longitude"]], **heatmap_settings)
+
+# Get south west and north east most points for setting bounds
+sw = df[["coordinate.latitude", "coordinate.longitude"]].min().values.tolist()
+ne = df[["coordinate.latitude", "coordinate.longitude"]].max().values.tolist()
+m.fit_bounds([sw, ne])
 
 m.add_child(heatmap)
 m.save(os.path.join("temp", "map.html"))

@@ -67,6 +67,22 @@
           <script src="static/DMsDensityChart.js"></script>
         </div>
       </div>
+      
+      <div class="card purple" id="old-messages-card">
+        <h2 class="card-title">Your First Messages</h2>
+        <p class="card-description">Scroll through the first direct messages you ever sent/received!</p>
+        <div class="card-content">
+          <div id="messages-container">
+            {% for msg in dashInfo['firstMessages'] %}
+            <div class="message-container">
+              <div class="message-header"><h3>{{ msg['sender_name'] }} to {{ msg['recipient_name'] }}</h3></div>
+              <p class="message-date">{{ msg['timestamp_ms'] | timestampToDate }}</p>
+              <div class="message {{ 'message-sent' if msg['sender_name'] == dashInfo['mainUser'] else 'message-received' }}"><p>{{ msg['content'] }}</p></div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
 
       <div class="card red" id="friends-card">
         <h2 class="card-title">Friends</h2>
@@ -77,6 +93,7 @@
         <h2 class="card-title">Likes</h2>
         <div class="card-content"></div>
       </div>
+
     </div>
   </body>
 </html>

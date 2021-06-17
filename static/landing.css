@@ -3,12 +3,12 @@
 * {
   padding: 0;
   margin: 0;
-  color: #2d3436;
   font-family: 'Open Sans', sans-serif;
 }
 
 body {
   background-color: #dfe6e9;
+  color: #2d3436;
   margin: 1rem;
 }
 
@@ -121,6 +121,11 @@ body:after {
   filter: drop-shadow(0.5rem 0.5rem 0 #d63031);
 }
 
+.purple {
+  background-color: #a29bfe;
+  filter: drop-shadow(0.5rem 0.5rem 0 #6c5ce7);
+}
+
 /* LIL STAT CONTAINERS */
 .stat-container-container {
   display: flex;
@@ -163,7 +168,7 @@ body:after {
 /* Location card */
 #location-card {
   min-width: 20rem;
-  max-width: 30rem;
+  max-width: 35rem;
 }
 
 #map-container {
@@ -195,4 +200,89 @@ body:after {
 #DMs-density-chart {
   height: 100%;
   margin-bottom: 1rem;
+}
+
+/* Friends Card */
+#friends-card {
+  width: auto;
+  min-width: 18rem;
+  /* max-width: 45rem; */
+}
+
+/* Old messages card */
+#old-messages-card {
+  min-width: 25rem;
+  max-width: 40rem;
+}
+
+#old-messages-card .card-content {
+  height: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 1rem 1rem 1rem;
+}
+
+#messages-container {
+  overflow-y: scroll;
+  flex: 1 1;
+  width: 100%;
+  background-color: #2d3436;
+  color: #dfe6e9;
+  padding: 0.6rem;
+  border-radius: 1rem;
+}
+
+.message-container {
+  margin-bottom: 1rem;
+}
+
+.message-header {
+  color: #dfe6e9;
+}
+
+.message-date {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #b2bec3;
+}
+
+.message {
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.message-sent {
+  background: #6c5ce7;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.message-received {
+  background: #E4E6EB;
+  color: #2d3436;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+#messages-container::-webkit-scrollbar {
+  width: 1rem;
+  height: 12px;
+}
+
+#messages-container::-webkit-scrollbar-track {
+  background: #636e72;
+  border-radius: 1rem;
+}
+
+#messages-container::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: #E4E6EB;
+}
+
+#messages-container::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }

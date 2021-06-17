@@ -26,7 +26,7 @@ traceInfo = {user: {"sent": data[user]["sentTotal"], "received": data[user]["rec
 # Create pallete
 # pal = color_palette(palette='rocket', n_colors=N+2)
 # rocket, viridis, Set2, Paired
-pal = color_palette("blend:#20ADAB,#636e72", n_colors=N)
+pal = color_palette("blend:#ff7675,#00b0ac", n_colors=N)
 
 # Group into all messages and compute density functions, grabbing the min and max timestamps
 print(f"[getDMsDensity] Computing density functions")

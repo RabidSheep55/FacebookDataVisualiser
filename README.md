@@ -1,6 +1,9 @@
 # Facebook Data Visualiser
 Kind of like the Spotify wrapped experience, but for your Facebook data
 
+![Screenshot of the app](static/Screenshot.jpg?raw=true "App Screenshot")
+
+
 ## TODO
 * [x] Location history data plotting
 * [ ] Message data visualisation
